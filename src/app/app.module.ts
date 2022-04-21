@@ -10,11 +10,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { HomeComponent } from './components/home/home.component';
+import { TestsListComponent } from './components/tests-list/tests-list.component';
+import { TestComponent } from './components/test/test.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    TestsListComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,
