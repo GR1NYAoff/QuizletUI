@@ -14,6 +14,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { HomeComponent } from './components/home/home.component';
 import { TestsListComponent } from './components/tests-list/tests-list.component';
 import { TestComponent } from './components/test/test.component'
+import { AUTH_API_URL } from './app-injection-tokens';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { TestComponent } from './components/test/test.component'
     MatTableModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [{
+    provide: AUTH_API_URL,
+    useValue: environment.authApi
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
