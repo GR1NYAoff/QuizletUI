@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  authApi: 'http://localhost:5042/'
+  authApi: 'http://localhost:5042/',
+  tokenDisallowedRoutes: ['http://localhost:5042/api/Auth/login']
 };
 
 /*
