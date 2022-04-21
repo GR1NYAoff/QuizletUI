@@ -5,7 +5,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Injectable, Inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Token } from '../models/token';
+import { Token } from '../Models/token';
 
 export const ACCESS_TOKEN_KEY = 'quizlet_access_token';
 
