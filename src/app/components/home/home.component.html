@@ -1,29 +1,32 @@
-<div>
-      <div class="topnav">
-        <a
-          [routerLink]="['/tests']"
-          routerLinkActive='active'
-          [routerLinkActiveOptions]="{ exact: true }"
-          *ngIf="isLoggedIn"
-          >Tests</a
-        >
-      </div>
-    
-      <mat-card *ngIf="!isLoggedIn">
-        <mat-form-field class ="examle-form-field">
-          <mat-label>Email</mat-label>
-          <input type = "email" matInput placeholder="user@gmail.com" #email>
-        </mat-form-field>
-        <mat-form-field>
-        <mat-label>Password</mat-label>
-          <input type = "password" matInput #password>
-        </mat-form-field>
-        <button mat-flat-button color="primary" (click)='login(email.value, password.value)'>Login</button>
-      </mat-card>
-    
-      <mat-card *ngIf='isLoggedIn'>
-        <button mat-flat-button color="primary" (click)='logout()'>Logout</button>
-      </mat-card>
-    
-      <app-tests-list *ngIf='isLoggedIn'></app-tests-list>
+<div class="container mt-5">
+  <form *ngIf="!isLoggedIn">
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" placeholder="Email" #email />
     </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        placeholder="Password"
+        #password
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="login(email.value, password.value)"
+    >
+      Login
+    </button>
+  </form>
+  <div *ngIf="isLoggedIn">
+    <button type="submit" class="btn btn-primary" (click)="logout()">
+      Logout
+    </button>
+  </div>
+  <div class="container mt-3">
+    <app-tests-list *ngIf="isLoggedIn"></app-tests-list>
+  </div>
+</div>

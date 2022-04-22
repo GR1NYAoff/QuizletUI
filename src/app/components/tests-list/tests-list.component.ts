@@ -17,7 +17,6 @@ export class TestsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.refreshList();
-    console.log(this.listTests);
   }
 
   refreshList() {
@@ -35,6 +34,6 @@ export class TestsListComponent implements OnInit {
 
   startTest(test: Test) {
     console.log(test);
-    //this.router.navigate([`/test`])
+    this.router.navigate([`/test/${test.id}`])
   }
 }
