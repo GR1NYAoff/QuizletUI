@@ -1,4 +1,3 @@
-//import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { HttpClient } from '@angular/common/http';
 import { AUTH_API_URL } from '../app-injection-tokens';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -40,6 +39,6 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
   }
 }

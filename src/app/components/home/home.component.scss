@@ -1,0 +1,27 @@
+.topnav {
+      overflow: hidden;
+      background-color: #333;
+    
+      a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px, 16px;
+        text-decoration: none;
+        font-size: 17px;
+    
+        &.hover {
+          background-color: bisque;
+          color: black;
+        }
+    
+        &.active {
+          background-color: aqua;
+          color: white;
+        }
+      }
+    }
+    
+    .examle-form-field{
+          margin-right: 20px;
+    }

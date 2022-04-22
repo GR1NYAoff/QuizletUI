@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,22 +7,7 @@ import { AuthService } from './services/auth.service';
 })
 
 export class AppComponent {
-  public get isLoggedIn(): boolean {
-    return this.as.isAuthenticated();
-  }
 
-  constructor(private as: AuthService) {}
+  constructor() {}
 
-  login(email: string, password: string) {
-    this.as.login(email, password).subscribe(
-      (res) => {},
-      (error) => {
-        alert('Wrang email or password');
-      }
-    );
-  }
-
-  logout() {
-    this.as.logout();
-  }
 }
