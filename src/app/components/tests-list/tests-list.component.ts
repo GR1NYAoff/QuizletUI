@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Test } from 'src/app/Models/test';
 import { TestsService } from 'src/app/services/tests.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tests-list',
@@ -12,7 +13,7 @@ export class TestsListComponent implements OnInit {
   test:Test;
   list:Test[];
 
-  constructor(private ts: TestsService) {}
+  constructor(private ts: TestsService, private router: Router) {}
 
   ngOnInit(): void {
     this.refreshList();
@@ -30,5 +31,9 @@ export class TestsListComponent implements OnInit {
     this.ts.getTest(id).subscribe((res) => {
       this.test = res as Test;
     });
+  }
+
+  startTest() {
+    this.router.navigate([`/test`])
   }
 }
