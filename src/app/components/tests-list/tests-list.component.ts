@@ -11,18 +11,18 @@ import { Router } from '@angular/router';
 export class TestsListComponent implements OnInit {
   
   test:Test;
-  list:Test[];
+  listTests:Test[];
 
   constructor(private ts: TestsService, private router: Router) {}
 
   ngOnInit(): void {
     this.refreshList();
-    console.log(this.list);
+    console.log(this.listTests);
   }
 
   refreshList() {
     this.ts.getAvailableTests().subscribe((res) => {
-      this.list = res as Test[];
+      this.listTests = res as Test[];
       console.log(res);
     });
   }
@@ -33,7 +33,8 @@ export class TestsListComponent implements OnInit {
     });
   }
 
-  startTest() {
-    this.router.navigate([`/test`])
+  startTest(test: Test) {
+    console.log(test);
+    //this.router.navigate([`/test`])
   }
 }

@@ -1,11 +1,11 @@
 <span>Available Tests</span>
 <div class="container">
       <ul class="list-group  mb-5">  
-            <li *ngFor="let test of list" class="list-group-item my-2">      
+            <li *ngFor="let test of listTests" class="list-group-item my-2">      
                   <div class="raw mt-3">
-                        {{test.id}}. {{test.name}}
-                        <button type="button" class="btn btn-danger mx-5 px-5 mb-2" style="float: right" 
-                  (click)="startTest()">Start</button> 
+                        {{test.name}}
+                        <button type="button" class="btn btn-success mx-5 px-5 mb-2" style="float: right" 
+                  (click)="startTest(test)">Start</button> 
                   </div>                   
             </li>   
       </ul>
