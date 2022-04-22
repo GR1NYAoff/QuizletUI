@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public get isLoggedIn(): boolean {
+    return this.as.isAuthenticated();
+  }
+  constructor(private as: AuthService) { }
 
+  login(email: string, password: string) {
+    this.as.login(email, password).subscribe(
+      (res) => {},
+      (error) => {
+        alert('Wrang email or password');
+      }
+    );
+  }
+
+  logout() {
+    this.as.logout();
+  }
+  
   ngOnInit(): void {
   }
 
