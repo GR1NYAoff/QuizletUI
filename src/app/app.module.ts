@@ -9,8 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatTableModule} from '@angular/material/table';
 
 import { JwtModule } from '@auth0/angular-jwt'
 
@@ -49,7 +49,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        disallowedRoutes: environment.tokenDisallowedRoutes
+        //disallowedRoutes: environment.tokenDisallowedRoutes,
+        allowedDomains: environment.tokenAllowedDomains
       }
     })
   ],

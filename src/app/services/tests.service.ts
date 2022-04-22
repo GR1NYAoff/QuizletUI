@@ -8,7 +8,7 @@ import { Test } from '../Models/test';
   providedIn: 'root',
 })
 export class TestsService {
-  private baseApiUrl = `${this.apiUrl}/api/Tests`;
+  private baseApiUrl = `${this.apiUrl}api/Tests`;
 
   constructor(
     private httpClient: HttpClient,
