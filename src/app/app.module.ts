@@ -6,12 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatTableModule} from '@angular/material/table';
-
 import { JwtModule } from '@auth0/angular-jwt'
 
 import { HomeComponent } from './components/home/home.component';
@@ -39,12 +33,6 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTableModule,
-    MatFormFieldModule,
 
     JwtModule.forRoot({
       config: {
