@@ -1,5 +1,4 @@
 export class Answer {
-      first: string;
-      second: string;
-      third: string;
+      bodyAnswer: string;
+      isCorrect: boolean;
 }
