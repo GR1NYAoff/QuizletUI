@@ -20,6 +20,7 @@ import { TestComponent } from './components/test/test.component'
 import { AUTH_API_URL } from './app-injection-tokens';
 import { environment } from 'src/environments/environment';
 import { ACCESS_TOKEN_KEY } from './services/auth.service';
+import { QuestionComponent } from './components/question/question.component';
 
 export function tokenGetter() {
   return localStorage.getItem(ACCESS_TOKEN_KEY);
@@ -31,6 +32,7 @@ export function tokenGetter() {
     HomeComponent,
     TestsListComponent,
     TestComponent,
+    QuestionComponent,
   ],
   imports: [
     BrowserModule,
