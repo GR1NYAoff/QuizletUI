@@ -31,5 +31,5 @@
     <button mat-flat-button color="primary" (click)='logout()'>Logout</button>
   </mat-card>
 
-  <app-home></app-home>
+  <app-home *ngIf='isLoggedIn'></app-home>
 </div>
