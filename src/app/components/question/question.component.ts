@@ -78,6 +78,19 @@ export class QuestionComponent implements OnInit {
     return this.progerss;
   }
 
+  getResult() : void {
+    if (this.progerss == '100'){
+      this.isQuizComleted = true;
+    } else {
+      alert("You didn't answer all the test questions!!!")
+    }
+  }
+
+  backToList(): void {
+    localStorage.removeItem(CURRENT_TEST);
+    this.router.navigate(['/home']);
+  }
+
   ngOnInit(): void {
     this.questionList = this.getAllQuestions();
     this.answerList = this.getAllAnswers();
