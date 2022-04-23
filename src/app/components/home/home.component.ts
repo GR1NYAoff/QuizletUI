@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   }
   constructor(private as: AuthService) { }
 
+  email: string;
+  password: string;
+  
   login(email: string, password: string) {
     this.as.login(email, password).subscribe(
       (res) => {},

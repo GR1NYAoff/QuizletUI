@@ -10,20 +10,18 @@ import { Router } from '@angular/router';
 })
 export class TestsListComponent implements OnInit {
   
-  test:Test;
-  list:Test[];
+  listTests:Test[];
+  test: Test;
 
   constructor(private ts: TestsService, private router: Router) {}
 
   ngOnInit(): void {
     this.refreshList();
-    console.log(this.list);
   }
 
   refreshList() {
     this.ts.getAvailableTests().subscribe((res) => {
-      this.list = res as Test[];
-      console.log(res);
+      this.listTests = res as Test[];
     });
   }
 
@@ -33,7 +31,8 @@ export class TestsListComponent implements OnInit {
     });
   }
 
-  startTest() {
-    this.router.navigate([`/test`])
+  startTest(testId: number) {
+    this.getTest(testId);
+    this.router.navigate([`/test/${testId}`])
   }
 }

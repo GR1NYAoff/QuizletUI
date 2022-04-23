@@ -6,12 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatTableModule} from '@angular/material/table';
-
 import { JwtModule } from '@auth0/angular-jwt'
 
 import { HomeComponent } from './components/home/home.component';
@@ -21,6 +15,7 @@ import { AUTH_API_URL } from './app-injection-tokens';
 import { environment } from 'src/environments/environment';
 import { ACCESS_TOKEN_KEY } from './services/auth.service';
 import { QuestionComponent } from './components/question/question.component';
+import { HeaderComponent } from './components/header/header.component';
 
 export function tokenGetter() {
   return localStorage.getItem(ACCESS_TOKEN_KEY);
@@ -33,6 +28,7 @@ export function tokenGetter() {
     TestsListComponent,
     TestComponent,
     QuestionComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,16 +36,10 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     HttpClientModule,
 
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
-    MatTableModule,
-    MatFormFieldModule,
-
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        //disallowedRoutes: environment.tokenDisallowedRoutes,
+        disallowedRoutes: environment.tokenDisallowedRoutes,
         allowedDomains: environment.tokenAllowedDomains
       }
     })
