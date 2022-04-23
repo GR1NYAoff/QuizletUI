@@ -22,7 +22,6 @@ export class TestsListComponent implements OnInit {
   refreshList() {
     this.ts.getAvailableTests().subscribe((res) => {
       this.listTests = res as Test[];
-      console.log(res);
     });
   }
 
