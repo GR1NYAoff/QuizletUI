@@ -23,6 +23,8 @@ export class QuestionComponent implements OnInit {
   correctAnswers: number = 0;
   incorrectAnswers: number = 0;
 
+  progerss: string = '0';
+
   isQuizComleted: boolean = false;
 
   getAllQuestions(): Question[] {
@@ -66,6 +68,14 @@ export class QuestionComponent implements OnInit {
     if (!(this.currentQuestion >= this.questionList.length - 1)) {
       this.currentQuestion++;
     }
+
+    this.getProgressPercent();
+
+  }
+
+  getProgressPercent() : string {
+    this.progerss = (((this.correctAnswers+this.incorrectAnswers)/this.questionList.length)*100).toString();
+    return this.progerss;
   }
 
   ngOnInit(): void {

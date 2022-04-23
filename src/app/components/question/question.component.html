@@ -17,14 +17,13 @@
         <span style="font-style: italic"
           >Question {{ currentQuestion + 1 }} of {{ questionList.length }}</span
         >
-        <span>Cor: {{correctAnswers}} Incor: {{incorrectAnswers}}</span>
       </div>
     </div>
     <div class="progress mb-3">
       <div
         class="progress-bar progress-bar-striped bg-success"
         role="progressbar"
-        style="width: 25%"
+        [ngStyle]="{'width': progerss+'%'}"
         aria-valuenow="25"
         aria-valuemin="0"
         aria-valuemax="100"
