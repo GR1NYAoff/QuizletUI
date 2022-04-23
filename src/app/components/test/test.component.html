@@ -7,7 +7,12 @@
   </div>
 
   <!-- Select the checkbox "I agree to start", click "Proceed" -->
-  <button type="button" class="btn btn-success btn-lg" [disabled]="isProceed">
+  <button
+    type="button"
+    class="btn btn-success btn-lg"
+    [disabled]="isProceed"
+    (click)="startQuiz()"
+  >
     Proceed
   </button>
 
