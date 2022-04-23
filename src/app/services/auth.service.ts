@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Injectable, Inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Token } from '../Models/token';
+import { CURRENT_TEST } from './tests.service';
 
 export const ACCESS_TOKEN_KEY = 'quizlet_access_token';
 
@@ -26,7 +27,7 @@ export class AuthService {
         password,
       })
       .pipe(
-        tap(token => {
+        tap((token) => {
           localStorage.setItem(ACCESS_TOKEN_KEY, token.access_token);
         })
       );
@@ -38,6 +39,7 @@ export class AuthService {
   }
 
   logout(): void {
+    localStorage.removeItem(CURRENT_TEST);
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     this.router.navigate(['home']);
   }

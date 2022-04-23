@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 })
 export class TestsListComponent implements OnInit {
   
-  test:Test;
   listTests:Test[];
+  test: Test;
 
   constructor(private ts: TestsService, private router: Router) {}
 
@@ -32,8 +32,8 @@ export class TestsListComponent implements OnInit {
     });
   }
 
-  startTest(test: Test) {
-    console.log(test);
-    this.router.navigate([`/test/${test.id}`])
+  startTest(testId: number) {
+    this.getTest(testId);
+    this.router.navigate([`/test/${testId}`])
   }
 }

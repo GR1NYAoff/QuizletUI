@@ -4,6 +4,8 @@ import { Injectable, Inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { Test } from '../Models/test';
 
+export const CURRENT_TEST = 'current_test';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,12 +18,14 @@ export class TestsService {
   ) {}
 
   getAvailableTests(): Observable<Test[]> {
-    return this.httpClient.get<Test[]>(this.baseApiUrl)
-    .pipe(
-      tap(list => localStorage.setItem("list_tests",JSON.stringify(list))));
+    return this.httpClient.get<Test[]>(this.baseApiUrl);
   }
 
   getTest(id: number): Observable<Test> {
-    return this.httpClient.get<Test>(`${this.baseApiUrl}/${id}`)
+    return this.httpClient
+      .get<Test>(`${this.baseApiUrl}/${id}`)
+      .pipe(
+        tap((test) => localStorage.setItem(CURRENT_TEST, JSON.stringify(test)))
+      );
   }
 }
