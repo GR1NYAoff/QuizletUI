@@ -16,7 +16,9 @@ export class TestsService {
   ) {}
 
   getAvailableTests(): Observable<Test[]> {
-    return this.httpClient.get<Test[]>(this.baseApiUrl);
+    return this.httpClient.get<Test[]>(this.baseApiUrl)
+    .pipe(
+      tap(list => localStorage.setItem("list_tests",JSON.stringify(list))));
   }
 
   getTest(id: number): Observable<Test> {
