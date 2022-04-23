@@ -14,7 +14,10 @@
     </div>
     <div class="d-flex justify-content-around py-3">
       <div class="question-remain">
-        <span style="font-style: italic">1 of 3</span>
+        <span style="font-style: italic"
+          >Question {{ currentQuestion + 1 }} of {{ questionList.length }}</span
+        >
+        <span>Cor: {{correctAnswers}} Incor: {{incorrectAnswers}}</span>
       </div>
     </div>
     <div class="progress mb-3">
@@ -29,36 +32,42 @@
     </div>
     <div class="question">
       <div class="card">
-        <h3>{{questionList[currentQuestion].body}}</h3>
+        <h3>{{ questionList[currentQuestion]?.body }}</h3>
       </div>
     </div>
-    <div class="options">
-      <ol>
-        <li>
-          <div class="card">answer 1</div>
-        </li>
-        <li>
-          <div class="card">answer 2</div>
-        </li>
-        <li>
-          <div class="card">answer 3</div>
+    <div class="answers">
+      <ol *ngFor="let answer of answerList">
+        <li (click)="checkAnswer(answer.isCorrect, currentQuestion)">
+          <div class="card">{{ answer?.bodyAnswer }}</div>
         </li>
       </ol>
     </div>
     <div class="d-flex justify-content-between">
       <div class="d-flex justify-content-between">
         <button
+          [hidden]="currentQuestion <= 0"
           type="button"
           class="btn btn-secondary mx-5 px-5 mb-2"
           style="float: right"
+          (click)="previousQuestion()"
         >
           Previous
         </button>
       </div>
       <button
+        [hidden]="currentQuestion !== questionList.length - 1"
         type="button"
         class="btn btn-success mx-5 px-5 mb-2"
         style="float: right"
+      >
+        Results
+      </button>
+      <button
+        [hidden]="currentQuestion >= questionList.length - 1"
+        type="button"
+        class="btn btn-primary mx-5 px-5 mb-2"
+        style="float: right"
+        (click)="nextQuestion()"
       >
         Next
       </button>

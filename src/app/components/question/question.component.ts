@@ -16,8 +16,14 @@ export class QuestionComponent implements OnInit {
   questionList: Question[] = [];
   answerList: Answer[] = [];
 
+  answerDict: any = {};
+
   currentQuestion: number = 0;
-  test: Test;
+
+  correctAnswers: number = 0;
+  incorrectAnswers: number = 0;
+
+  isQuizComleted: boolean = false;
 
   getAllQuestions(): Question[] {
     return JSON.parse(this.getCurrentTest().questions);
@@ -28,8 +34,38 @@ export class QuestionComponent implements OnInit {
   }
 
   getCurrentTest(): Test {
-    var jsonTest = localStorage.getItem(CURRENT_TEST);
+    const jsonTest = localStorage.getItem(CURRENT_TEST);
     return JSON.parse(jsonTest!);
+  }
+
+  nextQuestion(): void {
+    this.currentQuestion++;
+  }
+  previousQuestion(): void {
+    this.currentQuestion--;
+  }
+
+  checkAnswer(answer: boolean, questionNum: number): void {
+    if (`${questionNum}` in this.answerDict) {
+      if (this.answerDict[`${questionNum}`] == answer) {
+        return;
+      } else if (!answer) {
+        this.incorrectAnswers++;
+        this.correctAnswers--;
+        this.answerDict[`${questionNum}`] = answer;
+      } else {
+        this.incorrectAnswers--;
+        this.correctAnswers++;
+        this.answerDict[`${questionNum}`] = answer;
+      }
+    } else {
+      answer ? this.correctAnswers++ : this.incorrectAnswers++;
+      this.answerDict[`${questionNum}`] = answer;
+    }
+
+    if (!(this.currentQuestion >= this.questionList.length - 1)) {
+      this.currentQuestion++;
+    }
   }
 
   ngOnInit(): void {
