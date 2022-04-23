@@ -1,11 +1,30 @@
-<div class="container mt-3 justify-content-center">
-  <h1>{{ currentTest.name }}</h1>
+<div class="container mt-3">
+  <h1>{{ getCurrentTest()?.name }}</h1>
   <div class="row">
     <div class="col-2 text-truncate">
-      {{ currentTest.description }}
+      {{ getCurrentTest()?.description }}
     </div>
   </div>
 
   <!-- Select the checkbox "I agree to start", click "Proceed" -->
+  <button type="button" class="btn btn-success btn-lg" [disabled]="isProceed">
+    Proceed
+  </button>
+
+  <div class="form-check my-2">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      [checked]="isAgree"
+      (change)="change($event)"
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      I agree to start
+    </label>
+  </div>
+
   <!-- button "Back to tests list" -->
+  <button type="button" class="btn btn-danger" (click)="backToList()">
+    Back
+  </button>
 </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Test } from 'src/app/Models/test';
-import { CURRENT_TEST, TestsService } from 'src/app/services/tests.service';
+import { CURRENT_TEST } from 'src/app/services/tests.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-test',
@@ -9,24 +10,31 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
-  constructor(
-    private ts: TestsService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   currentTest: Test;
 
-  getCurrentTest(jsonCurrentTest: string){
-    this.currentTest = JSON.parse(jsonCurrentTest);
+  isAgree: boolean = false;
+  isProceed: boolean = true;
+
+  change(event: any) {
+    if (event.target.checked === true) {
+      this.isProceed = false;
+    } else {
+      this.isProceed = true;
+    }
   }
 
-  ngOnInit(): void {
-    var jsonTest = localStorage.getItem(CURRENT_TEST);
-    this.getCurrentTest(jsonTest!);
-    var testId = this.route.params.subscribe((params: any) => {
-      console.log(params);
-    });
-    console.log(this.currentTest);
+  backToList() {
+    localStorage.removeItem(CURRENT_TEST);
+    this.router.navigate(['/home']);
   }
+
+  getCurrentTest(): Test {
+    var jsonTest = localStorage.getItem(CURRENT_TEST);
+    this.currentTest = JSON.parse(jsonTest!);
+    return this.currentTest;
+  }
+
+  ngOnInit(): void {}
 }
