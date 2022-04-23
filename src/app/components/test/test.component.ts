@@ -17,9 +17,16 @@ export class TestComponent implements OnInit {
 
   currentTest: Test;
 
+  getCurrentTest(jsonCurrentTest: string){
+    this.currentTest = JSON.parse(jsonCurrentTest);
+  }
+
   ngOnInit(): void {
+    var jsonTest = localStorage.getItem(CURRENT_TEST);
+    this.getCurrentTest(jsonTest!);
     var testId = this.route.params.subscribe((params: any) => {
       console.log(params);
     });
+    console.log(this.currentTest);
   }
 }
