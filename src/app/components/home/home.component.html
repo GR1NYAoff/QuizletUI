@@ -1,28 +1,96 @@
 <div class="container mt-5">
-  <form *ngIf="!isLoggedIn">
-    <div class="mb-3">
-      <label class="form-label">Email</label>
-      <input type="email" class="form-control" placeholder="Email" #email />
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Password</label>
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        #password
-      />
-    </div>
+  <ng-container *ngIf="!isRegister">
+    <form *ngIf="!isLoggedIn">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" placeholder="Email" #email />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          #password
+        />
+      </div>
+      <div class="raw d-flex">
+        <button
+          type="submit"
+          class="btn btn-outline-primary btn-lg"
+          (click)="login(email.value, password.value)"
+        >
+          Login
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success btn-lg mx-2"
+          (click)="getRegisterForm()"
+        >
+          Registration
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <ng-container *ngIf="isRegister">
+    <form #userForm="ngForm" autocomplete="off">
+      {{ regUser | json }}
+      <div class="form-group mb-3">
+        <label class="form-label">Login</label>
+        <input
+          type="text"
+          name="login"
+          class="form-control"
+          placeholder="Login"
+          [(ngModel)]="regUser.login"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Email"
+          [(ngModel)]="regUser.email"
+        />
+      </div>
+      <div class="form-group mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="regUser.password"
+        />
+      </div>
+      <div class="raw d-flex">
+        <button
+          type="submit"
+          class="btn btn-outline-primary btn-lg"
+          (click)="register(regUser)"
+        >
+          Register
+        </button>
+        <button
+          type="submit"
+          class="btn btn-danger btn-lg mx-2"
+          (click)="cancelRegistration()"
+        >
+          Cancel
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <div *ngIf="isLoggedIn">
     <button
       type="submit"
-      class="btn btn-outline-primary btn-lg"
-      (click)="login(email.value, password.value)"
+      class="btn btn-outline-danger btn-lg"
+      (click)="logout()"
     >
-      Login
-    </button>
-  </form>
-  <div *ngIf="isLoggedIn">
-    <button type="submit" class="btn btn-outline-danger btn-lg" (click)="logout()">
       Logout
     </button>
   </div>
