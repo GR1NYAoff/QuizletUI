@@ -15,14 +15,14 @@
     </div>
     <button
       type="submit"
-      class="btn btn-primary"
+      class="btn btn-outline-primary btn-lg"
       (click)="login(email.value, password.value)"
     >
       Login
     </button>
   </form>
   <div *ngIf="isLoggedIn">
-    <button type="submit" class="btn btn-danger" (click)="logout()">
+    <button type="submit" class="btn btn-outline-danger btn-lg" (click)="logout()">
       Logout
     </button>
   </div>
