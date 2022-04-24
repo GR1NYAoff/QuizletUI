@@ -33,6 +33,10 @@ export class AuthService {
       );
   }
 
+  register(data: any) : any {
+    return this.httpClient.post(`${this.apiUrl}api/Auth/reg`, data);
+  }
+
   isAuthenticated(): boolean {
     var token = localStorage.getItem(ACCESS_TOKEN_KEY);
     return !this.jwtHelperService.isTokenExpired(token!);
