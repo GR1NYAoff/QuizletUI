@@ -1,4 +1,6 @@
+import { BodyAnswer } from "./bodyAnswer";
+
 export class Answer {
-      bodyAnswer: string;
-      isCorrect: boolean;
+      questionNumber: number;
+      bodyAnswer: BodyAnswer[];
 }
