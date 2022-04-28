@@ -37,9 +37,9 @@
         </div>
       </div>
       <div class="answers">
-        <ol *ngFor="let answer of answerList">
+        <ol *ngFor="let answer of answerList[currentQuestion]?.bodyAnswer">
           <li (click)="checkAnswer(answer.isCorrect, currentQuestion)">
-            <div class="card">{{ answer?.bodyAnswer }}</div>
+            <div class="card">{{ answer?.text }}</div>
           </li>
         </ol>
       </div>
@@ -92,7 +92,7 @@
           <h4>
             <p>Total question attempted: {{ questionList.length }}</p>
             <p>Total correct answered: {{ correctAnswers }}</p>
-            <p>Total wrong answered: {{ correctAnswers }}</p>
+            <p>Total wrong answered: {{ incorrectAnswers }}</p>
           </h4>
           <div class="d-grid gap-2 col-6 mx-auto py-5">
             <button type="button" class="btn btn-danger" (click)="backToList()">

@@ -50,7 +50,6 @@ export class QuestionComponent implements OnInit {
   checkAnswer(answer: boolean, questionNum: number): void {
     if (`${questionNum}` in this.answerDict) {
       if (this.answerDict[`${questionNum}`] == answer) {
-        return;
       } else if (!answer) {
         this.incorrectAnswers++;
         this.correctAnswers--;
